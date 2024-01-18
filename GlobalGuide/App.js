@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, SafeAreaProvider } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Auth } from './src/pages/Signup/Auth';
@@ -8,18 +8,21 @@ import HomeScreen from './src/pages/HomeScreen/HomeScreen';
 // import HomeScreen from './path-to-HomeScreen';
 // import SettingsScreen from './path-to-SettingsScreen';
 import MainContainer from './src/MainContainer';
+
 const Stack = createStackNavigator();
+
 const LandingScreen = ({ navigation }) => {
   return (
     <Auth />
   );
 };
+
 const AuthenticatedNavigator = () => {
   return (
     <Stack.Navigator>
       {/* Add screens for authenticated users */}
-      <Stack.Screen name="Authenticated" component={MainContainer} />
-            <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Authenticated" component={MainContainer} options={{headerShown: false}}/>
+      <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
       {/* Other authenticated screens */}
     </Stack.Navigator>
   );
@@ -45,7 +48,7 @@ const App = () => {
         <Stack.Screen
           name="Landing"
           component={LandingScreen}
-          options={{ title: '' }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Authenticated"
@@ -56,12 +59,10 @@ const App = () => {
           name="Guest"
           component={GuestNavigator}
           options={{headerShown: false}}
-
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 
 export default App;

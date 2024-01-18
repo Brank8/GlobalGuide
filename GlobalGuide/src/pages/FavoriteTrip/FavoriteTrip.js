@@ -1,5 +1,12 @@
 import * as React from "react";
-import { ScrollView, View, Text, StyleSheet, Button, ImageBackground } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ImageBackground,
+} from "react-native";
 
 const FavoriteTrip = ({ route, navigation }) => {
   const { result, weather } = route.params ?? {};
@@ -16,7 +23,11 @@ const FavoriteTrip = ({ route, navigation }) => {
 
   // Check if there are plans, activities, and weather data to display
   const hasPlans = result && result.plan && result.plan.length > 0;
-  const hasWeather = weather && weather.forecast && weather.forecast.forecastday && weather.forecast.forecastday.length > 0;
+  const hasWeather =
+    weather &&
+    weather.forecast &&
+    weather.forecast.forecastday &&
+    weather.forecast.forecastday.length > 0;
 
   if (!weather) {
     console.log("Weather data is not available");
@@ -27,6 +38,10 @@ const FavoriteTrip = ({ route, navigation }) => {
     <View style={styles.container}>
       {hasPlans ? (
         <ScrollView>
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
           <Text style={styles.header}>
             {result.key && capitalizeWords(result.key.split("-")[1])}
           </Text>
@@ -46,15 +61,25 @@ const FavoriteTrip = ({ route, navigation }) => {
 
           {hasWeather && (
             <View>
-              <Text style={styles.weatherHeader}>Weather Forecast for {result.key && capitalizeWords(result.key.split("-")[1])}:</Text>
+              <Text style={styles.weatherHeader}>
+                Weather Forecast for{" "}
+                {result.key && capitalizeWords(result.key.split("-")[1])}:
+              </Text>
               <Text></Text>
               {weather.forecast.forecastday.map((day, index) => (
                 <View key={index} style={styles.weatherContainer}>
                   <Text>Date: {day.date}</Text>
-                  <Text>Max Temp: {day.day.maxtemp_c}°C | {day.day.maxtemp_f}°F</Text>
-                  <Text>Min Temp: {day.day.mintemp_c}°C | {day.day.mintemp_f}°F</Text>
-                  <Text>Condition: {day.day.condition.text}.</Text>               
-                  <ImageBackground source={{ uri: `https:${day.day.condition.icon}` }} style={styles.image}></ImageBackground>
+                  <Text>
+                    Max Temp: {day.day.maxtemp_c}°C | {day.day.maxtemp_f}°F
+                  </Text>
+                  <Text>
+                    Min Temp: {day.day.mintemp_c}°C | {day.day.mintemp_f}°F
+                  </Text>
+                  <Text>Condition: {day.day.condition.text}.</Text>
+                  <ImageBackground
+                    source={{ uri: `https:${day.day.condition.icon}` }}
+                    style={styles.image}
+                  ></ImageBackground>
                 </View>
               ))}
             </View>
@@ -79,6 +104,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "pink",
     justifyContent: "center",
+    marginTop: 35,
   },
   header: {
     fontSize: 20,
@@ -95,7 +121,7 @@ const styles = StyleSheet.create({
   weatherContainer: {
     backgroundColor: "grey",
     padding: 10,
-    paddingLeft: '20%',
+    paddingLeft: "20%",
     // marginTop: 30,
     // marginVertical: 5,
   },
@@ -111,7 +137,7 @@ const styles = StyleSheet.create({
   image: {
     width: 50,
     height: 40,
-    marginTop: 5
+    marginTop: 5,
   },
 });
 

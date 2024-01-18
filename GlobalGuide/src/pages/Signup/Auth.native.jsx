@@ -10,9 +10,10 @@ import {
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useNavigation } from "@react-navigation/native";
 import HomeScreen from "../HomeScreen/HomeScreen";
+
 export function Auth() {
   const navigation = useNavigation();
-
+  
   const handleAppleSignIn = async () => {
     try {
       const credential = await AppleAuthentication.signInAsync({
@@ -22,16 +23,13 @@ export function Auth() {
         ],
       });
       if (credential.identityToken) {
-        // If the identity token is present, navigate to MainContainer
-        navigation.navigate('Guest');
+        navigation.navigate("Authenticated");
       } else {
         throw new Error("No identityToken.");
       }
     } catch (e) {
       if (e.code === "ERR_REQUEST_CANCELED") {
-        // Handle the case where the user cancelled the sign-in request
       } else {
-        // Handle other exceptions
       }
     }
   };
@@ -46,24 +44,37 @@ export function Auth() {
           style={{ width: 200, height: 64 }}
           onPress={handleAppleSignIn}
         />
-        <Text>
-          Continue as Guest? Click{" "}
-          <TouchableOpacity onPress={() => navigation.navigate('Guest')}>
-            <Text>here</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>Continue as Guest? Click </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Guest")}>
+            <Text style={styles.here}>here</Text>
           </TouchableOpacity>
-        </Text>
+          <Text style={styles.text}>.</Text>
+        </View>
       </View>
     );
-  else
-    // If the platform is not iOS, you can return null or update the logic as needed
-    return null;
+  else return null;
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  textContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    margin: 7,
+  },
+  text: {
+    fontSize: 14,
+    // lineHeight: 20,
+  },
+  here: {
+    fontSize: 14,
+    // lineHeight: 20,
+    color: "blue",
+    // textDecorationLine: 'underline'
   },
 });
 

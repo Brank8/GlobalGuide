@@ -3,10 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export function Auth() {
   const handleSignInWeb = () => {
-    // This would be your endpoint that initiates the Sign in with Apple process.
+
     const appleAuthURL = 'https://apple.com/auth/apple';
 
-    // Redirect user to your backend endpoint for handling Sign in with Apple.
     window.location.href = appleAuthURL;
   };
 

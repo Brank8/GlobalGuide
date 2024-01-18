@@ -37,7 +37,7 @@ export default function MainContainer() {
           tabBarInactiveTintColor: 'black',
           tabBarShowLabel: true,
           tabBarStyle: {
-            height: 55,
+            height: 80,
             backgroundColor: 'white',
             // justifyContent: 'space-evenly'
           },
@@ -48,9 +48,9 @@ export default function MainContainer() {
           },
         })}
       >
-        <Tab.Screen name={homeName} component={HomeScreen} options={{ tabBarLabel: 'Home' }} />
-        <Tab.Screen name={favoritetripName} component={FavoriteTrip} options={{ tabBarLabel: 'My Favorite Trips' }} />
-        <Tab.Screen name={settingsName} component={SettingsScreen} options={{ tabBarLabel: 'Settings' }} />
+        <Tab.Screen name={homeName} component={HomeScreen} options={{headerShown: false}} />
+        <Tab.Screen name={favoritetripName} component={FavoriteTrip} options={{headerShown: false}} />
+        <Tab.Screen name={settingsName} component={SettingsScreen} options={{headerShown: false}} />
         {/* <Tab.Screen name="TripResults" component={TripResults} options={{ tabBarLabel: 'Trip Results' }} /> */}
       </Tab.Navigator>
     {/* </NavigationContainer> */}
