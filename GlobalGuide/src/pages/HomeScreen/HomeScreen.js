@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, TouchableWithoutFeedback, Keyboard, Text, Image } from "react-native";
 import SearchDestination from "../../components/SearchDestination/SearchDestination";
 import SearchCurrency from "../../components/SearchCurrency/SearchCurrency";
 // import SearchWeather from "../../components/SearchWeather/SearchWeather";
@@ -16,10 +16,13 @@ export default function HomeScreen({ navigation }) {
   const API_KEY_WEATHER = process.env.API_KEY_WEATHER;
   const BASE_URL_WEATHER = process.env.BASE_URL_WEATHER;
   const API_KEY_CURRENCY = process.env.API_KEY_CURRENCY;
-  const BASE_URL_CURRENCY = process.env.BASE_URL_CURRENCY; 
+  const BASE_URL_CURRENCY = process.env.BASE_URL_CURRENCY;
 
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
   return (
-  <>
+<TouchableWithoutFeedback onPress={dismissKeyboard}>
     <View style={styles.screenContainer}>
       <SearchDestination
         destination={destination}
@@ -47,7 +50,7 @@ export default function HomeScreen({ navigation }) {
         BASE_URL_CURRENCY={BASE_URL_CURRENCY}
       />
     </View>
-    </>
+    </TouchableWithoutFeedback>
   );
 }
 
