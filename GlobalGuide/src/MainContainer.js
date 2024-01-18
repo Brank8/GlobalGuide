@@ -16,7 +16,8 @@ const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
+    <>
       <LogoHeader />
       <Tab.Navigator
         initialRouteName={homeName}
@@ -38,7 +39,6 @@ export default function MainContainer() {
           tabBarStyle: {
             height: 55,
             backgroundColor: 'white',
-
             // justifyContent: 'space-evenly'
           },
           tabBarItemStyle: {
@@ -53,6 +53,7 @@ export default function MainContainer() {
         <Tab.Screen name={settingsName} component={SettingsScreen} options={{ tabBarLabel: 'Settings' }} />
         {/* <Tab.Screen name="TripResults" component={TripResults} options={{ tabBarLabel: 'Trip Results' }} /> */}
       </Tab.Navigator>
-    </NavigationContainer>
+    {/* </NavigationContainer> */}
+    </>
   );
 }

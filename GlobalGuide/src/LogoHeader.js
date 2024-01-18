@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const logoImage = require('../public/logo.png'); // Replace with actual path
 
 export default function LogoHeader() {
-  const navigation = useNavigation(); // This hook will provide the navigation object
+  const navigation = useNavigation();
 
   return (
     <View style={styles.logoContainer}>
@@ -18,16 +18,15 @@ export default function LogoHeader() {
 
 const styles = StyleSheet.create({
   logoContainer: {
-    marginTop: 15,
-    marginLeft: 0, 
-    alignSelf: 'flex-start',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 50,
+    paddingLeft: 5,
     position: 'absolute',
-    top: 10,
+    // top: 50,
     left: 0,
     zIndex: 1,
   },
   logo: {
-    width: 70,
+    width: 60,
     height: 60,
     resizeMode: 'contain',
   },

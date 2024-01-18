@@ -1,23 +1,67 @@
-import * as React from 'react'
-import MainContainer from './src/MainContainer'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import * as React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Auth } from './src/pages/Signup/Auth';
+import HomeScreen from './src/pages/HomeScreen/HomeScreen';
+// If you have other screens, import them here
+// import HomeScreen from './path-to-HomeScreen';
+// import SettingsScreen from './path-to-SettingsScreen';
+import MainContainer from './src/MainContainer';
+const Stack = createStackNavigator();
+const LandingScreen = ({ navigation }) => {
+  return (
+    <Auth />
+  );
+};
+const AuthenticatedNavigator = () => {
+  return (
+    <Stack.Navigator>
+      {/* Add screens for authenticated users */}
+      <Stack.Screen name="Authenticated" component={MainContainer} />
+            <Stack.Screen name="Home" component={HomeScreen} />
+      {/* Other authenticated screens */}
+    </Stack.Navigator>
+  );
+};
 
-function App() {
-  return(
-    <SafeAreaView style={styles.container}>
-    <MainContainer />
-    </SafeAreaView>
-  )
-}
+const GuestNavigator = () => {
+  return (
+    <Stack.Navigator>
+      {/* Add screens for guest users */}
+      <Stack.Screen name="Home" component={MainContainer} options={{headerShown: false}}/>
+      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
+      {/* Other guest screens */}
+    </Stack.Navigator>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: '500',
-  },
-});
+const App = () => {
+  // const userIsAuthenticated = Auth(); // Implement your authentication check logic
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator options={{headerShown: false}}>
+        <Stack.Screen
+          name="Landing"
+          component={LandingScreen}
+          options={{ title: '' }}
+        />
+        <Stack.Screen
+          name="Authenticated"
+          component={AuthenticatedNavigator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Guest"
+          component={GuestNavigator}
+          options={{headerShown: false}}
+
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
 
 export default App;
