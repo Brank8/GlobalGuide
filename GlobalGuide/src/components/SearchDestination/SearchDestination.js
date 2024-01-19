@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+
 
 const SearchDestination = ({ destination, setDestination, days, setDays, navigation, API_KEY, BASE_URL, API_KEY_WEATHER, BASE_URL_WEATHER }) => {
   const searchDestination = async () => {

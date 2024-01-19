@@ -8,6 +8,7 @@ import HomeScreen from './src/pages/HomeScreen/HomeScreen';
 // import HomeScreen from './path-to-HomeScreen';
 // import SettingsScreen from './path-to-SettingsScreen';
 import MainContainer from './src/MainContainer';
+// import Auth from './src/pages/Signup/Auth.native';
 
 const Stack = createStackNavigator();
 

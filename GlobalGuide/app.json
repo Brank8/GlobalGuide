@@ -16,19 +16,28 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "usesAppleSignIn": true
+      "usesAppleSignIn": true,
+      "bundleIdentifier": "com.banjoza.GlobalGuide"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.banjoza.GlobalGuide"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-apple-authentication"
-    ]
+      "expo-apple-authentication",
+      "@react-native-google-signin/google-signin"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bf95e0c0-5897-4eb6-830c-57679ab178c5"
+      }
+    },
+    "scheme": "GlobalGuide"
   }
 }
