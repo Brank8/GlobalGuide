@@ -23,7 +23,7 @@ const SearchDestination = ({ destination, setDestination, navigation, API_KEY, B
 
   const searchDestination = async () => {
     if (!destination || !days) {
-      alert('Please fill in both fields.');
+      alert('Please enter your destination.');
       return;
     }
     const url = `${BASE_URL}?days=${days}&destination=${encodeURIComponent(destination)}`;
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     fontSize: screenWidth * 0.03,
     color: 'grey',
     fontWeight: 'bold',
-    marginLeft: screenWidth * 0.01,
+    marginLeft: screenWidth * 0.02,
+    marginBottom: screenWidth * 0.005,
   },
   inputGroup: {
     alignItems: 'center',
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    width: '75%',
+    width: '90%',
     alignItems: 'center',
   },
   button: {
@@ -140,13 +141,16 @@ const styles = StyleSheet.create({
   stepperContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
     borderWidth: 1,
     borderColor: 'blue',
     borderRadius: 5,
     backgroundColor: 'pink',
+    width: '100%',
   },
   stepperButton: {
     padding: screenWidth * 0.02,
+    
   },
   stepperInputContainer: {
     justifyContent: 'center',

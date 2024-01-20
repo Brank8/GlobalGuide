@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     // marginVertical: 5,
   },
   noTrips: {
-    fontSize: 16,
+    fontSize: 25,
     color: "grey",
     textAlign: "center",
   },

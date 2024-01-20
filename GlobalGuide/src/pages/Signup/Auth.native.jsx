@@ -60,7 +60,7 @@ export function Auth({ promptAsync }) {
           onPress={() => promptAsync()}
         >
           <View style={styles.iconContainer}>
-<Svg width={30} height={30} viewBox="0 0 48 48" style={styles.googleIcon}>
+<Svg width={20} height={30} viewBox="0 0 48 48" style={styles.googleIcon}>
     <Path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
     <Path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
     <Path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
@@ -110,41 +110,44 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     // flex: 1
   },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 30,
-    marginBottom: '10%'
-  },
   first: {
     fontSize: screenWidth * 0.10,
-    marginLeft: '7%',
     color: 'gold',
-    marginTop: '20%',
+    position: 'absolute',
+    top: screenHeight * 0.15,
+    left: '5%',
   },
   second: {
     fontSize: screenWidth * 0.075,
-    margin: '10%',
-    marginLeft: '38%',
     color: 'orange',
-
+    position: 'absolute',
+    top: screenHeight * 0.275,
+    right: '5%',
   },
   third: {
     fontSize: screenWidth * 0.05,
-    marginLeft: '19%',
     color: 'red',
+    position: 'absolute',
+    top: screenHeight * 0.40,
+    alignSelf: 'center',
+  },
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    padding: 30,
   },
   googleButton: {
     backgroundColor: "white",
-    width: "80%",
+    width: screenWidth * 0.7,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 30,
     paddingVertical: 12,
     borderRadius: 5,
-    marginBottom: '5%',
+    position: 'absolute',
+    top: screenHeight * 0.5,
   },
   googleTextContainer: {
     flexDirection: 'row',
@@ -158,33 +161,37 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingRight: 8,
+    paddingRight: 5,
+    paddingLeft: screenWidth * 0.03,
   },
   googleIcon: {
-    // marginLeft: 0
+    // marginLeft: 0,
   },
   appleButton: {
-    width: "80%",
+    width: screenWidth * 0.7,
     height: 60,
-    marginBottom: 5,
+    top: screenHeight * 0.5 + 60,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
   },
   textContainer: {
     flexDirection: "row",
     alignItems: "center",
     margin: 7,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     padding: 5,
-    borderRadius: 5
+    borderRadius: 5,
+    position: 'absolute',
+    top: screenHeight * 0.5 + 120,
   },
   text: {
-    fontSize: 17,
-    color: "white",
+    fontSize: screenWidth * 0.04,
+    color: "black",
   },
   here: {
-    fontSize: 17,
-    color: "yellowgreen",
+    fontSize: screenWidth * 0.04,
+    color: "maroon",
     textDecorationLine: 'underline',
   },
 });
