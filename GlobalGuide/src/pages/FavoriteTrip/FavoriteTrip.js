@@ -42,14 +42,15 @@ const FavoriteTrip = ({ route, navigation }) => {
           <Text></Text>
           <Text></Text>
           <Text></Text>
+          <Text></Text>
+          <Text></Text>
           <Text style={styles.header}>
             {result.key && capitalizeWords(result.key.split("-")[1])}
           </Text>
           <Text></Text>
           {result.plan.map((dayPlan, index) => (
             <View key={index}>
-              <Text style={styles.header}>Day {dayPlan.day}:</Text>
-              <Text></Text>
+              <Text style={styles.day}>Day {dayPlan.day}</Text>
               {dayPlan.activities.map((activity, activityIndex) => (
                 <Text key={activityIndex}>
                   {activity.time} - {activity.description}.
@@ -104,13 +105,22 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "pink",
     justifyContent: "center",
-    marginTop: 35,
+    // marginTop: 35,
   },
   header: {
     fontSize: 20,
     fontWeight: "bold",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     textAlign: "center",
+    marginBottom: 10
+  },
+  day: {
+    fontSize: 15,
+    fontWeight: "bold",
+    // backgroundColor: "yellow",
+    textAlign: "center",
+    marginBottom: 10,
+    marginTop: 5
   },
   weatherHeader: {
     fontSize: 18,

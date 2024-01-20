@@ -24,6 +24,7 @@ export function Auth({ promptAsync }) {
         ],
       });
       if (credential.identityToken) {
+        console.log("APPLE USER");
         navigation.navigate("Authenticated");
       } else {
         throw new Error("No identityToken.");

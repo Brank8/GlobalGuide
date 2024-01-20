@@ -38,6 +38,6 @@
         "projectId": "bf95e0c0-5897-4eb6-830c-57679ab178c5"
       }
     },
-    "scheme": "GlobalGuide"
+    "scheme": ["globalguide"]
   }
 }

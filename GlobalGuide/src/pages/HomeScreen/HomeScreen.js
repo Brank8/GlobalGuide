@@ -39,6 +39,12 @@ export default function HomeScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.screenContainer}>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
         <SearchDestination
           destination={destination}
           setDestination={setDestination}
@@ -68,8 +74,8 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: "pink",
     justifyContent: 'center',
-    marginTop: 35,
+    // marginTop: 35,
   },
 });

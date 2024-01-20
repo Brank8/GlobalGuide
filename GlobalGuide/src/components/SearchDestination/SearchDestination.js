@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-
-const SearchDestination = ({ destination, setDestination, days, setDays, navigation, API_KEY, BASE_URL, API_KEY_WEATHER, BASE_URL_WEATHER }) => {
+const SearchDestination = ({ destination, setDestination, days, setDays, navigation, API_KEY, BASE_URL, API_KEY_WEATHER, BASE_URL_WEATHER, onPress }) => {
   const searchDestination = async () => {
     if (!destination || !days) {
       alert('Please fill in both fields.');
@@ -50,10 +50,10 @@ const SearchDestination = ({ destination, setDestination, days, setDays, navigat
           keyboardType="numeric"
         />
       </View>
-      <Button
-        title="Search destination"
-        onPress={searchDestination}
-      />
+      <TouchableOpacity onPress={onPress} style={styles.button}>
+      <MaterialIcons name="public" size={30} color="black" />
+      <Text style={styles.buttonText}>Search destination</Text>
+    </TouchableOpacity>
     </View>
   );
 };
@@ -82,6 +82,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'pink',
     maxWidth: '180px',
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'pink',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    marginLeft: 2,
+    fontSize: 15,
+    color: 'green'
   },
 });
 

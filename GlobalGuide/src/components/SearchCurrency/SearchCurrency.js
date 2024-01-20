@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const SearchCurrency = ({ currencyFrom, setCurrencyFrom, currencyTo, setCurrencyTo, amount, setAmount }) => {
   const convertCurrency = () => {
@@ -9,6 +11,7 @@ const SearchCurrency = ({ currencyFrom, setCurrencyFrom, currencyTo, setCurrency
   return (
     <View style={styles.container}>
         <View style={styles.row}>
+            
       <TextInput
         style={styles.input}
         onChangeText={setCurrencyFrom
@@ -16,6 +19,7 @@ const SearchCurrency = ({ currencyFrom, setCurrencyFrom, currencyTo, setCurrency
 value={currencyFrom}
 placeholder="From USD"
 />
+<FontAwesome style={styles.exchange} name="exchange" size={24} color="black" />
 <TextInput
      style={styles.input}
      onChangeText={setCurrencyTo}
@@ -23,6 +27,7 @@ placeholder="From USD"
      placeholder="To EUR"
    />
     </View>
+    <View style={styles.row}>
 <TextInput
      style={styles.input}
      onChangeText={setAmount}
@@ -30,10 +35,18 @@ placeholder="From USD"
      placeholder="50 USD"
      keyboardType="numeric"
    />
-<Button
-     title="Convert"
-     onPress={convertCurrency}
+   <TextInput
+     style={styles.input}
+     onChangeText={setAmount}
+     value={amount}
+     placeholder="50 USD"
+     keyboardType="numeric"
    />
+   </View>
+         <TouchableOpacity onPress={convertCurrency} style={styles.button}>
+        <Text style={styles.buttonText}>Convert</Text>
+        <FontAwesome name="money" size={24} color="white" />
+      </TouchableOpacity>
 </View>
 );
 };
@@ -57,15 +70,35 @@ const styles = StyleSheet.create({
   },
   input: {
     // height: 40,
-    margin: 12,
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 10,
     borderWidth: 1,
     padding: 10,
     width: '30%',
     borderColor: 'blue',
     borderRadius: 5,
-    backgroundColor: 'yellow',
-    maxWidth: '180px'
+    maxWidth: '180px',
+    borderColor: 'blue',
+    backgroundColor: 'pink',
     },
+    button: {
+        flexDirection: 'row',
+        backgroundColor: 'blue',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      buttonText: {
+        color: 'white',
+        fontSize: 18,
+        marginRight: 5,
+      },
+      exchange: {
+        marginTop: 5,
+        margin: -12,
+      },
     });
 
 export default SearchCurrency;
