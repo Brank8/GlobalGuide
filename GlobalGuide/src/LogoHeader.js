@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const logoImage = require('../public/logo.png'); // Replace with actual path
+const logo = require('../public/logo.png'); // Replace with actual path
 
 export default function LogoHeader() {
   const navigation = useNavigation();
@@ -12,7 +12,7 @@ export default function LogoHeader() {
   return (
     <View style={[styles.logoContainer, { paddingTop: topPadding }]}>
       <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-        <Image source={logoImage} style={styles.logo} />
+        <Image source={logo} style={styles.logo} />
       </TouchableOpacity>
     </View>
   );

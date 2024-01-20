@@ -35,6 +35,7 @@ const SearchDestination = ({ destination, setDestination, days, setDays, navigat
   
   return (
     <View style={styles.container}>
+      <View style={styles.labels}><Text style={styles.label}>Your destination:</Text><Text style={styles.label}>Length of stay:</Text></View>
       <View style={styles.row}>
         <TextInput
           style={styles.input}
@@ -42,6 +43,7 @@ const SearchDestination = ({ destination, setDestination, days, setDays, navigat
           value={destination}
           placeholder="Miami"
         />
+        {/* <Text style={styles.label}>How many days?</Text> */}
         <TextInput
           style={styles.input}
           onChangeText={setDays}
@@ -52,7 +54,7 @@ const SearchDestination = ({ destination, setDestination, days, setDays, navigat
       </View>
       <TouchableOpacity onPress={onPress} style={styles.button}>
       <MaterialIcons name="public" size={30} color="black" />
-      <Text style={styles.buttonText}>Search destination</Text>
+      <Text style={styles.buttonText}>Search Destination</Text>
     </TouchableOpacity>
     </View>
   );
@@ -68,6 +70,18 @@ const styles = StyleSheet.create({
     width: '90%',
     left: '5%',
     height: '30%'
+  },
+  label: {
+    // marginLeft: 12,
+    fontSize: 10.5,
+    color: 'grey',
+    fontWeight: 'bold',
+    marginRight: 25,
+    marginLeft: 18,
+  },
+  labels: {
+    flexDirection: 'row',
+    marginBottom: -10
   },
   row: {
     flexDirection: 'row',

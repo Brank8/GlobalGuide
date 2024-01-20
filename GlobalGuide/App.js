@@ -17,7 +17,6 @@ const AuthenticatedNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="AuthenticatedHome" component={MainContainer} options={{ headerShown: false }} />
-      {/* Other authenticated screens */}
     </Stack.Navigator>
   );
 };
@@ -26,7 +25,6 @@ const GuestNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="GuestHome" component={MainContainer} options={{ headerShown: false }} listeners={{ focus: () => console.log("GUEST USER") }}/>
-      {/* Other guest screens */}
     </Stack.Navigator>
   );
 };

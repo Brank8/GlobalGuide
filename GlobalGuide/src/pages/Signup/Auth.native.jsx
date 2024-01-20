@@ -6,11 +6,17 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  ImageBackground,
+  Dimensions,
 } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import Svg, { Path } from 'react-native-svg';
+
+const backgroundLogin = require('../../../public/login.jpg')
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export function Auth({ promptAsync }) {
   const navigation = useNavigation();
@@ -40,6 +46,14 @@ export function Auth({ promptAsync }) {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
+<ImageBackground 
+        source={backgroundLogin} 
+        style={styles.backgroundLogin}
+        resizeMode='cover'
+      >
+            <Text style={styles.first}>Discover More</Text>
+            <Text style={styles.second}t>Wander Wisely</Text>
+      <Text style={styles.third}> - Your GlobalGuide Awaits.</Text>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.googleButton}
@@ -81,6 +95,7 @@ export function Auth({ promptAsync }) {
           <Text style={styles.text}>.</Text>
         </View>
       </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -88,13 +103,37 @@ export function Auth({ promptAsync }) {
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
-    backgroundColor: "grey",
+  },
+  backgroundLogin: {
+    // width: screenWidth,
+    // height: screenHeight,
+    ...StyleSheet.absoluteFillObject,
+    // flex: 1
   },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 30,
+    marginBottom: '10%'
+  },
+  first: {
+    fontSize: screenWidth * 0.10,
+    marginLeft: '7%',
+    color: 'gold',
+    marginTop: '20%',
+  },
+  second: {
+    fontSize: screenWidth * 0.075,
+    margin: '10%',
+    marginLeft: '38%',
+    color: 'orange',
+
+  },
+  third: {
+    fontSize: screenWidth * 0.05,
+    marginLeft: '19%',
+    color: 'red',
   },
   googleButton: {
     backgroundColor: "white",
@@ -105,7 +144,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 12,
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: '5%',
   },
   googleTextContainer: {
     flexDirection: 'row',
@@ -122,7 +161,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   googleIcon: {
-    marginLeft: 0
+    // marginLeft: 0
   },
   appleButton: {
     width: "80%",
@@ -135,13 +174,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     margin: 7,
+    backgroundColor: 'black',
+    padding: 5,
+    borderRadius: 5
   },
   text: {
-    fontSize: 14,
+    fontSize: 17,
+    color: "white",
   },
   here: {
-    fontSize: 14,
-    color: "blue",
+    fontSize: 17,
+    color: "yellowgreen",
     textDecorationLine: 'underline',
   },
 });
