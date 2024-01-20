@@ -10,6 +10,7 @@ import {
 import SearchDestination from "../../components/SearchDestination/SearchDestination";
 import SearchCurrency from "../../components/SearchCurrency/SearchCurrency";
 import { useIsFocused } from '@react-navigation/native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export default function HomeScreen({ navigation }) {
   const [destination, setDestination] = React.useState("");
@@ -39,12 +40,6 @@ export default function HomeScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.screenContainer}>
-      <Text></Text>
-      <Text></Text>
-      <Text></Text>
-      <Text></Text>
-      <Text></Text>
-      <Text></Text>
         <SearchDestination
           destination={destination}
           setDestination={setDestination}
@@ -74,8 +69,9 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "turquoise",
+    alignItems: 'center',
     justifyContent: 'center',
-    // marginTop: 35,
+    paddingTop: getStatusBarHeight(),
   },
 });

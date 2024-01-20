@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -14,9 +15,14 @@ const settingsName = "Settings";
 
 const Tab = createBottomTabNavigator();
 
+// Get the screen dimensions
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+
+// Calculate the appropriate padding based on screen size
+const tabBarHeight = screenHeight * 0.1; // For example, 10% of screen height
+
 export default function MainContainer() {
   return (
-    // <NavigationContainer>
     <>
       <LogoHeader />
       <Tab.Navigator
@@ -33,16 +39,16 @@ export default function MainContainer() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "red",
-          tabBarInactiveTintColor: "black",
+          tabBarActiveTintColor: "darkmagenta",
+          tabBarInactiveTintColor: "midnightblue",
           tabBarShowLabel: true,
           tabBarStyle: {
-            height: 80,
-            backgroundColor: "white",
-            // justifyContent: 'space-evenly'
+            height: tabBarHeight,
+            backgroundColor: "gold",
+            paddingTop: tabBarHeight * 0.03,
+            paddingBottom: tabBarHeight * 0.3,
           },
           tabBarItemStyle: {
-            // flex: 1,
             alignItems: "center",
             justifyContent: "center",
           },
@@ -63,9 +69,7 @@ export default function MainContainer() {
           component={SettingsScreen}
           options={{ headerShown: false }}
         />
-        {/* <Tab.Screen name="TripResults" component={TripResults} options={{ tabBarLabel: 'Trip Results' }} /> */}
       </Tab.Navigator>
-      {/* </NavigationContainer> */}
     </>
   );
 }
