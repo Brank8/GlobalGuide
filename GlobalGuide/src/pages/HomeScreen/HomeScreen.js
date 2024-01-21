@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import SearchDestination from "../../components/SearchDestination/SearchDestination";
 import SearchCurrency from "../../components/SearchCurrency/SearchCurrency";
-import { useIsFocused } from '@react-navigation/native';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { useIsFocused } from "@react-navigation/native";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 
 export default function HomeScreen({ navigation }) {
   const [destination, setDestination] = React.useState("");
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     backgroundColor: "turquoise",
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingTop: getStatusBarHeight(),
   },
 });

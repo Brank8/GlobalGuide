@@ -7,11 +7,12 @@ import {
   Button,
   ImageBackground,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 
-const background = require('../../../public/background.png') 
-const screenHeight = Dimensions.get('window').height;
+const background = require("../../../public/background.png");
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
 
 const FavoriteTrip = ({ route, navigation }) => {
   const { result, weather } = route.params ?? {};
@@ -42,22 +43,15 @@ const FavoriteTrip = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       {hasPlans ? (
-        <ScrollView>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
+        <ScrollView style={styles.top}>
           <Text style={styles.header}>
             {result.key && capitalizeWords(result.key.split("-")[1])}
           </Text>
-          <Text></Text>
           {result.plan.map((dayPlan, index) => (
             <View key={index}>
               <Text style={styles.day}>Day {dayPlan.day}</Text>
               {dayPlan.activities.map((activity, activityIndex) => (
-                <Text key={activityIndex}>
+                <Text style={styles.paragraph} key={activityIndex}>
                   {activity.time} - {activity.description}.
                 </Text>
               ))}
@@ -93,19 +87,19 @@ const FavoriteTrip = ({ route, navigation }) => {
         </ScrollView>
       ) : (
         <View style={styles.noTripsContainer}>
-          <ImageBackground 
-        source={background} 
-        style={styles.background}
-        resizeMode='cover'
-      ></ImageBackground>
-      <View style={styles.white}>
-          <Text style={styles.noTrips}>No trips yet...</Text>
-          <TouchableOpacity
-  onPress={() => navigation.navigate("Home")}
-  style={styles.button}
->
-  <Text style={styles.buttonText}>Discover New Places</Text>
-</TouchableOpacity>
+          <ImageBackground
+            source={background}
+            style={styles.background}
+            resizeMode="cover"
+          ></ImageBackground>
+          <View style={styles.white}>
+            <Text style={styles.noTrips}>No trips yet...</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Home")}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Discover New Places</Text>
+            </TouchableOpacity>
           </View>
         </View>
       )}
@@ -116,41 +110,48 @@ const FavoriteTrip = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 20,
-    // backgroundColor: "pink",
     justifyContent: "center",
-    // marginTop: 35,
+  },
+  top: {
+    padding: screenWidth * 0.025,
   },
   header: {
-    fontSize: 20,
+    fontSize: screenWidth * 0.1,
     fontWeight: "bold",
-    // backgroundColor: "yellow",
     textAlign: "center",
-    marginBottom: 10
+    marginBottom: screenHeight * 0.02,
+    marginTop: screenHeight * 0.15,
+    color: 'darkviolet'
   },
   day: {
-    fontSize: 15,
+    fontSize: screenWidth * 0.05,
     fontWeight: "bold",
-    // backgroundColor: "yellow",
     textAlign: "center",
     marginBottom: 10,
-    marginTop: 5
+    marginTop: 5,
+  },
+  paragraph: {
+    paddingLeft: screenWidth * 0.1,
+    paddingRight: screenWidth * 0.1,
+    paddingBottom: screenHeight * 0.01,
+    fontSize: screenWidth * 0.04,
   },
   weatherHeader: {
-    fontSize: 18,
+    fontSize: screenWidth * 0.05,
     fontWeight: "bold",
     marginTop: 30,
     textAlign: "center",
+    color: 'crimson'
   },
   weatherContainer: {
-    backgroundColor: "grey",
-    padding: 10,
-    paddingLeft: "20%",
+    padding: screenHeight * 0.007,
+    paddingLeft: screenWidth * 0.25,
+    paddingBottom: screenHeight * 0.03,
     // marginTop: 30,
     // marginVertical: 5,
   },
   noTrips: {
-    fontSize: 25,
+    fontSize: screenWidth * 0.06,
     color: "white",
     textAlign: "center",
   },
@@ -159,29 +160,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    width: 50,
+    width: 60,
     height: 40,
-    marginTop: 5,
+    marginTop: screenHeight * 0.003,
   },
   background: {
     ...StyleSheet.absoluteFillObject,
   },
   white: {
-    backgroundColor: 'darkviolet',
-    width: '60%',
+    backgroundColor: "darkviolet",
+    width: "60%",
     padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    position: 'absolute',
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    position: "absolute",
     bottom: screenHeight * 0.08,
-    borderRadius: 10
+    borderRadius: 10,
   },
   buttonText: {
-    color: 'lime',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold'
+    color: "lime",
+    textAlign: "center",
+    fontSize: screenWidth * 0.05,
+    fontWeight: "bold",
   },
 });
 

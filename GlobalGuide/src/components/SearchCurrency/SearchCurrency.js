@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { View, TextInput, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Dimensions,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-const { width: screenWidth } = Dimensions.get('window');
+const { width: screenWidth } = Dimensions.get("window");
 
 const SearchCurrency = ({
   currencyFrom,
@@ -12,25 +19,26 @@ const SearchCurrency = ({
   amount,
   setAmount,
 }) => {
-  const [conversionResult, setConversionResult] = useState('Result');
+  const [conversionResult, setConversionResult] = useState("Result");
 
   const convertCurrency = async () => {
-    const API_KEY_CURRENCY = '95999f7bccmshfaa9d39676a1b3bp119261jsn0b5421b99e82';
-    const BASE_URL_CURRENCY = 'https://currency-converter241.p.rapidapi.com/';
+    const API_KEY_CURRENCY =
+      "95999f7bccmshfaa9d39676a1b3bp119261jsn0b5421b99e82";
+    const BASE_URL_CURRENCY = "https://currency-converter241.p.rapidapi.com/";
 
     const headers = {
-      'X-RapidAPI-Key': API_KEY_CURRENCY,
-      'X-RapidAPI-Host': 'currency-converter241.p.rapidapi.com'
+      "X-RapidAPI-Key": API_KEY_CURRENCY,
+      "X-RapidAPI-Host": "currency-converter241.p.rapidapi.com",
     };
 
     const url = `${BASE_URL_CURRENCY}conversion_rate?from=${currencyFrom}&to=${currencyTo}`;
 
     try {
-      const response = await fetch(url, { method: 'GET', headers: headers });
+      const response = await fetch(url, { method: "GET", headers: headers });
       const data = await response.json();
 
       if (!data.rate) {
-        setConversionResult('Enter valid data');
+        setConversionResult("Enter valid data");
         return;
       }
 
@@ -40,18 +48,20 @@ const SearchCurrency = ({
       setConversionResult(`${convertedAmount} ${currencyTo.toUpperCase()}`);
     } catch (error) {
       // console.error('There was an error converting the currency:', error);
-      setConversionResult('Error: Try again');
+      setConversionResult("Error: Try again");
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Make every penny count on your journey,</Text>
-      <Text style={styles.subtitle}>stay updated with the latest currency rates!</Text>
+      <Text style={styles.subtitle}>
+        stay updated with the latest currency rates!
+      </Text>
       <View style={styles.fromTo}>
-      <Text style={styles.label}>From:</Text>
-      <Text style={styles.label}>‎ ‎ ‎ To:</Text>
-      <Text style={styles.label}>Amount:</Text>   
+        <Text style={styles.label}>From:</Text>
+        <Text style={styles.label}>‎ ‎ ‎ To:</Text>
+        <Text style={styles.label}>Amount:</Text>
       </View>
       <View style={styles.row}>
         <TextInput
@@ -81,7 +91,10 @@ const SearchCurrency = ({
         />
       </View>
       <View style={styles.row}>
-        <TouchableOpacity onPress={convertCurrency} style={[styles.input, styles.convertButton]}>
+        <TouchableOpacity
+          onPress={convertCurrency}
+          style={[styles.input, styles.convertButton]}
+        >
           <Text style={styles.buttonText}>Convert</Text>
           <FontAwesome name="money" size={20} color="white" />
         </TouchableOpacity>
@@ -106,7 +119,7 @@ const styles = StyleSheet.create({
   },
   resultText: {
     fontSize: screenWidth * 0.04,
-    color: 'black',
+    color: "black",
   },
   title: {
     fontSize: screenWidth * 0.04,
@@ -123,14 +136,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: screenWidth * 0.19,
     marginLeft: screenWidth * 0.06,
-    width: '100%',
+    width: "100%",
   },
   label: {
     flexDirection: "row",
     marginBottom: screenWidth * -0.018,
     fontSize: screenWidth * 0.035,
-    color: 'grey',
-    fontWeight: 'bold',
+    color: "grey",
+    fontWeight: "bold",
   },
   row: {
     flexDirection: "row",
@@ -162,8 +175,8 @@ const styles = StyleSheet.create({
     marginHorizontal: screenWidth * 0.01,
   },
   resultContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "lightgrey",
     padding: screenWidth * 0.03,
     borderRadius: 5,
