@@ -78,8 +78,8 @@ const SearchDestination = ({ destination, setDestination, navigation, API_KEY, B
       </View>
       </View>
       <TouchableOpacity onPress={searchDestination} style={styles.button}>
+        <Text style={styles.buttonText}>Search </Text>
         <MaterialIcons name="public" size={30} color="darkviolet" />
-        <Text style={styles.buttonText}>Search Destination</Text>
       </TouchableOpacity>
     </View>
   );
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   label: {
     alignSelf: 'flex-start',
-    fontSize: screenWidth * 0.03,
+    fontSize: screenWidth * 0.035,
     color: 'grey',
     fontWeight: 'bold',
     marginLeft: screenWidth * 0.02,
@@ -127,15 +127,16 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'pink',
-    padding: 10,
+    padding: 5,
     borderRadius: 5,
     marginTop: 10,
-    width: '50%',
+    width: '35%',
   },
   buttonText: {
     marginLeft: 2,
-    fontSize: screenWidth * 0.03,
+    fontSize: screenWidth * 0.05,
     color: 'green',
   },
   stepperContainer: {

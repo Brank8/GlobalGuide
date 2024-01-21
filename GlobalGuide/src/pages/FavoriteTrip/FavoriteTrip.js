@@ -6,7 +6,12 @@ import {
   StyleSheet,
   Button,
   ImageBackground,
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
+
+const background = require('../../../public/background.png') 
+const screenHeight = Dimensions.get('window').height;
 
 const FavoriteTrip = ({ route, navigation }) => {
   const { result, weather } = route.params ?? {};
@@ -88,11 +93,20 @@ const FavoriteTrip = ({ route, navigation }) => {
         </ScrollView>
       ) : (
         <View style={styles.noTripsContainer}>
+          <ImageBackground 
+        source={background} 
+        style={styles.background}
+        resizeMode='cover'
+      ></ImageBackground>
+      <View style={styles.white}>
           <Text style={styles.noTrips}>No trips yet...</Text>
-          <Button
-            title="Discover New Places"
-            onPress={() => navigation.navigate("Home")}
-          />
+          <TouchableOpacity
+  onPress={() => navigation.navigate("Home")}
+  style={styles.button}
+>
+  <Text style={styles.buttonText}>Discover New Places</Text>
+</TouchableOpacity>
+          </View>
         </View>
       )}
     </View>
@@ -102,8 +116,8 @@ const FavoriteTrip = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "pink",
+    // padding: 20,
+    // backgroundColor: "pink",
     justifyContent: "center",
     // marginTop: 35,
   },
@@ -137,7 +151,7 @@ const styles = StyleSheet.create({
   },
   noTrips: {
     fontSize: 25,
-    color: "grey",
+    color: "white",
     textAlign: "center",
   },
   noTripsContainer: {
@@ -148,6 +162,26 @@ const styles = StyleSheet.create({
     width: 50,
     height: 40,
     marginTop: 5,
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  white: {
+    backgroundColor: 'darkviolet',
+    width: '60%',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: screenHeight * 0.08,
+    borderRadius: 10
+  },
+  buttonText: {
+    color: 'lime',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
   },
 });
 

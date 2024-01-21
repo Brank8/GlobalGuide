@@ -1,49 +1,41 @@
-import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Platform, StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import {
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+  StatusBar,
+  Dimensions,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const logo = require('../public/logo.png'); // Replace with actual path
-
+const logo = require("../public/logo.png");
+const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
+const statusBarHeight = Platform.OS === "android" ? StatusBar.currentHeight : screenHeight * 0.05;
 export default function LogoHeader() {
   const navigation = useNavigation();
 
-  const topPadding = getTopPadding();
-
   return (
-    <View style={[styles.logoContainer, { paddingTop: topPadding }]}>
-      <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+    <View style={[styles.logoContainer]}>
+      <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
         <Image source={logo} style={styles.logo} />
       </TouchableOpacity>
     </View>
   );
 }
 
-const getTopPadding = () => {
-  // Adjust this value if needed for different devices or iOS versions
-  const standardIOSPadding = 20; // Standard padding for older iOS devices without a notch
-  const notchPadding = 44; // Known padding for iOS devices with a notch
-  const androidPadding = StatusBar.currentHeight || 0;
-
-  if (Platform.OS === 'android') return androidPadding;
-  if (Platform.OS === 'ios') {
-    // Here you may add additional checks for specific devices or screen sizes if needed
-    const hasNotch = false; // Set this based on the device model or screen dimensions
-    return hasNotch ? notchPadding : standardIOSPadding;
-  }
-  return 0; // Default padding for other platforms
-};
-
 const styles = StyleSheet.create({
   logoContainer: {
-    paddingLeft: 5,
+    paddingLeft: screenWidth * 0.01,
     position: 'absolute',
-    top: 20, // Use top instead of paddingTop for the container
+    paddingTop: statusBarHeight,
     left: 0,
     zIndex: 1,
   },
   logo: {
-    width: 60,
     height: 60,
     resizeMode: 'contain',
+    width: screenWidth * 0.15,
   },
 });

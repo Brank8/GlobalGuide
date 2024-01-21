@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Dimensions,
-} from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -21,21 +14,51 @@ const SearchCurrency = ({
 }) => {
   const [conversionResult, setConversionResult] = useState('Result');
 
-  const convertCurrency = () => {
-    setConversionResult(`Converted amount: XYZ ${currencyTo}`);
-    alert(`Convert ${amount} from ${currencyFrom} to ${currencyTo}`);
+  const convertCurrency = async () => {
+    const API_KEY_CURRENCY = '95999f7bccmshfaa9d39676a1b3bp119261jsn0b5421b99e82';
+    const BASE_URL_CURRENCY = 'https://currency-converter241.p.rapidapi.com/';
+
+    const headers = {
+      'X-RapidAPI-Key': API_KEY_CURRENCY,
+      'X-RapidAPI-Host': 'currency-converter241.p.rapidapi.com'
+    };
+
+    const url = `${BASE_URL_CURRENCY}conversion_rate?from=${currencyFrom}&to=${currencyTo}`;
+
+    try {
+      const response = await fetch(url, { method: 'GET', headers: headers });
+      const data = await response.json();
+
+      if (!data.rate) {
+        setConversionResult('Enter valid data');
+        return;
+      }
+
+      const rate = data.rate;
+      const convertedAmount = (rate * parseFloat(amount)).toFixed(2);
+
+      setConversionResult(`${convertedAmount} ${currencyTo.toUpperCase()}`);
+    } catch (error) {
+      // console.error('There was an error converting the currency:', error);
+      setConversionResult('Error: Try again');
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Make every penny count on your journey,</Text>
       <Text style={styles.subtitle}>stay updated with the latest currency rates!</Text>
+      <View style={styles.fromTo}>
+      <Text style={styles.label}>From:</Text>
+      <Text style={styles.label}>‎ ‎ ‎ To:</Text>
+      <Text style={styles.label}>Amount:</Text>   
+      </View>
       <View style={styles.row}>
         <TextInput
           style={[styles.input, styles.inputThird]}
           onChangeText={setCurrencyFrom}
           value={currencyFrom}
-          placeholder="From:"
+          placeholder="USD"
         />
         <FontAwesome
           name="exchange"
@@ -47,13 +70,13 @@ const SearchCurrency = ({
           style={[styles.input, styles.inputThird]}
           onChangeText={setCurrencyTo}
           value={currencyTo}
-          placeholder="To:"
+          placeholder="EUR"
         />
         <TextInput
           style={[styles.input, styles.inputThird]}
           onChangeText={setAmount}
           value={amount}
-          placeholder="Amount"
+          placeholder="20"
           keyboardType="numeric"
         />
       </View>
@@ -96,6 +119,19 @@ const styles = StyleSheet.create({
     color: "black",
     marginBottom: screenWidth * 0.03,
   },
+  fromTo: {
+    flexDirection: "row",
+    gap: screenWidth * 0.19,
+    marginLeft: screenWidth * 0.06,
+    width: '100%',
+  },
+  label: {
+    flexDirection: "row",
+    marginBottom: screenWidth * -0.018,
+    fontSize: screenWidth * 0.035,
+    color: 'grey',
+    fontWeight: 'bold',
+  },
   row: {
     flexDirection: "row",
     alignItems: "center",
@@ -108,7 +144,7 @@ const styles = StyleSheet.create({
     borderColor: "blue",
     borderRadius: 5,
     backgroundColor: "pink",
-    fontSize: screenWidth * 0.04,
+    fontSize: screenWidth * 0.045,
     flex: 1,
     marginHorizontal: screenWidth * 0.01,
   },
