@@ -27,7 +27,6 @@ const FavoriteTrip = ({ route, navigation }) => {
   console.log(result, "HELLO");
   console.log(weather, "WEATHER");
 
-  // Check if there are plans, activities, and weather data to display
   const hasPlans = result && result.plan && result.plan.length > 0;
   const hasWeather =
     weather &&

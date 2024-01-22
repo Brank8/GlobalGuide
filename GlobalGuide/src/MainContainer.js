@@ -15,11 +15,9 @@ const settingsName = "Settings";
 
 const Tab = createBottomTabNavigator();
 
-// Get the screen dimensions
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-// Calculate the appropriate padding based on screen size
-const tabBarHeight = screenHeight * 0.1; // For example, 10% of screen height
+const tabBarHeight = screenHeight * 0.1;
 
 export default function MainContainer() {
   return (
