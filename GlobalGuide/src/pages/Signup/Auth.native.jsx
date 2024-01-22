@@ -1,25 +1,59 @@
-import React from "react";
-import {
-  Platform,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  ImageBackground,
-  Dimensions,
-} from "react-native";
+import React, { useEffect, useState } from 'react';
+import { Platform, View, StyleSheet, Text, TouchableOpacity, SafeAreaView, ImageBackground, Dimensions, Button } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import Svg, { Path } from "react-native-svg";
+import * as Google from 'expo-auth-session/providers/google';
+import { ResponseType } from 'expo-auth-session';
+// import { GoogleSignin, GoogleSigninButton } from "@react-native-google-signin/google-signin"
+import * as AuthSession from 'expo-auth-session';
 
 const backgroundLogin = require("../../../public/login.jpg");
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
-export function Auth({ promptAsync }) {
+export function Auth() {
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com',
+  });
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+      // You can use this token to authenticate against your backend
+    }
+  }, [response]);
+  // const [error, setError] = useState()
+  // const [userInfo, setUserInfo] = useState()
+
   const navigation = useNavigation();
+
+  // useEffect(() => {
+  //   GoogleSignin.configure({
+  //     webClientId: "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com"
+  //   })
+  // }, []);
+      // webClientId: "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com",
+
+  // const signin = async () => {
+  //   console.log("Pressed sign in");
+  //   try {
+  //     await GoogleSignin.hasPlayServices();
+  //     const user = await GoogleSignin.signIn();
+  //     setUserInfo(user);
+  //     setError();
+  //   } catch (e) {
+  //     setError(e);
+  //   }
+  // }
+
+  // const logout = () => {
+  //   setUserInfo;
+  //   GoogleSignin.revokeAccess();
+  //   GoogleSignin.signOut()
+  // }
+
 
   const handleAppleSignIn = async () => {
     try {
@@ -37,9 +71,7 @@ export function Auth({ promptAsync }) {
       }
     } catch (e) {
       if (e.code === "ERR_REQUEST_CANCELED") {
-        // Handle the error when the request was cancelled
       } else {
-        // Handle other errors
       }
     }
   };
@@ -59,7 +91,11 @@ export function Auth({ promptAsync }) {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.googleButton}
-            onPress={() => promptAsync()}
+            disabled={!request}
+            title="Login"
+            onPress={() => {
+              promptAsync();
+            }}
           >
             <View style={styles.iconContainer}>
               <Svg
@@ -97,7 +133,7 @@ export function Auth({ promptAsync }) {
               <Text style={[styles.googleLetter, { color: "#EA4335" }]}>e</Text>
             </View>
           </TouchableOpacity>
-          {Platform.OS === "ios" && (
+          {/* {Platform.OS === "ios" && ( */}
             <AppleAuthentication.AppleAuthenticationButton
               buttonType={
                 AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
@@ -109,7 +145,7 @@ export function Auth({ promptAsync }) {
               style={styles.appleButton}
               onPress={handleAppleSignIn}
             />
-          )}
+          {/* )} */}
           <View style={styles.textContainer}>
             <Text style={styles.text}>Continue as Guest? Click </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Guest")}>

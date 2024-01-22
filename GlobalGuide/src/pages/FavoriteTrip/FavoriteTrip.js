@@ -36,8 +36,6 @@ const FavoriteTrip = ({ route, navigation }) => {
     weather.forecast.forecastday.length > 0;
 
   if (!weather) {
-    console.log("Weather data is not available");
-    // You can handle the absence of weather data here
   }
 
   return (

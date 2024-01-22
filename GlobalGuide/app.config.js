@@ -1,4 +1,4 @@
-{
+export default {
   "expo": {
     "name": "GlobalGuide",
     "slug": "GlobalGuide",
@@ -17,14 +17,25 @@
     "ios": {
       "supportsTablet": true,
       "usesAppleSignIn": true,
-      "bundleIdentifier": "com.banjoza.GlobalGuide"
+      "bundleIdentifier": "com.banjoza.globalguide",
+      "googleServicesFile": process.env.GOOGLE_SERVICES_INFOPLIST,
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.859767867537-p7jif2unfvsp2opoubsrtksq9lqqpq9o"
+            ]
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.banjoza.GlobalGuide"
+      "package": "com.banjoza.globalguide",
+      "googleServicesFile": process.env.GOOGLE_SERVICES_JSON,  
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -38,6 +49,6 @@
         "projectId": "bf95e0c0-5897-4eb6-830c-57679ab178c5"
       }
     },
-    "scheme": ["globalguide"]
+    "scheme": "globalguide"
   }
 }

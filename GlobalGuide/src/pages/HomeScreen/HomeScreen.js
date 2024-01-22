@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Text,
-  Image,
-} from "react-native";
+import { View, StyleSheet, TouchableWithoutFeedback, Keyboard, Text,Image, } from "react-native";
 import SearchDestination from "../../components/SearchDestination/SearchDestination";
 import SearchCurrency from "../../components/SearchCurrency/SearchCurrency";
 import { useIsFocused } from "@react-navigation/native";
@@ -40,6 +33,9 @@ export default function HomeScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.screenContainer}>
+      <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>GlobalGuide</Text>
+        </View>
         <SearchDestination
           destination={destination}
           setDestination={setDestination}
@@ -73,5 +69,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: getStatusBarHeight(),
+  },
+  headerContainer: {
+    width: '100%',
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+  },
+  headerText: {
+    color: '#005f73',
+    fontSize: 42,
+    fontWeight: 'bold',
+    letterSpacing: 2,
+    shadowOffset: {
+      width: -5,
+      height: 4,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 4.84,
+    elevation: 5,
   },
 });
