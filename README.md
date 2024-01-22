@@ -25,10 +25,11 @@ The app is expected to be launched to the App Store and Google Play Store by Feb
 
 ## Planned future enhancements 
 
+- Launching the app to App Store and Google Play Store
 - Adding more functionality to the 'Settings' page
 - Fixing Google O'Auth login issue
 - Adding favorite trip option and saving the trip or deleting it
-- Adding functionality so user can have many trips saved on one page
-- Launching the app to App Store and Google Play Store
+- Adding functionality so that user can have many trips saved on one page
+- Adding the 4th API key for translation section in the app
 
 Shout out to [AI Trip Planner](https://rapidapi.com/nabeeldev1340/api/ai-trip-planner), [Weather API](https://www.weatherapi.com) and [Currency Converter](https://rapidapi.com/airaudoeduardo/api/currency-converter241/) for the API keys!
