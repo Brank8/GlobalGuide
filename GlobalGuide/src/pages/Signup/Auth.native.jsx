@@ -145,7 +145,7 @@ export function Auth() {
               style={styles.appleButton}
               onPress={handleAppleSignIn}
             />
-          {/* )} */}
+          {/* // )}  */}
           <View style={styles.textContainer}>
             <Text style={styles.text}>Continue as Guest? Click </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Guest")}>
