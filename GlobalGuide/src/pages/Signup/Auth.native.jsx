@@ -9,51 +9,27 @@ import { ResponseType } from 'expo-auth-session';
 // import { GoogleSignin, GoogleSigninButton } from "@react-native-google-signin/google-signin"
 import * as AuthSession from 'expo-auth-session';
 
+
 const backgroundLogin = require("../../../public/login.jpg");
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
 export function Auth() {
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com',
+    expoClientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com',
+    iosClientId: '1076596954735-omthr1l92svgqnoops96dkq43u9lp94s.apps.googleusercontent.com',
+    androidClientId: '1076596954735-hrbi12akkvueajdtqsfcm6i773cbec24.apps.googleusercontent.com',
+    webClientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com', 
   });
-
+  
   React.useEffect(() => {
     if (response?.type === 'success') {
+      const { authentication } = response;
       const { id_token } = response.params;
-      // You can use this token to authenticate against your backend
     }
   }, [response]);
-  // const [error, setError] = useState()
-  // const [userInfo, setUserInfo] = useState()
 
   const navigation = useNavigation();
-
-  // useEffect(() => {
-  //   GoogleSignin.configure({
-  //     webClientId: "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com"
-  //   })
-  // }, []);
-      // webClientId: "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com",
-
-  // const signin = async () => {
-  //   console.log("Pressed sign in");
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const user = await GoogleSignin.signIn();
-  //     setUserInfo(user);
-  //     setError();
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  // }
-
-  // const logout = () => {
-  //   setUserInfo;
-  //   GoogleSignin.revokeAccess();
-  //   GoogleSignin.signOut()
-  // }
-
 
   const handleAppleSignIn = async () => {
     try {
@@ -164,10 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backgroundLogin: {
-    // width: screenWidth,
-    // height: screenHeight,
     ...StyleSheet.absoluteFillObject,
-    // flex: 1
   },
   first: {
     fontSize: screenWidth * 0.1,

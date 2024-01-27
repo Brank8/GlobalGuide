@@ -18,12 +18,18 @@ export default {
       "supportsTablet": true,
       "usesAppleSignIn": true,
       "bundleIdentifier": "com.banjoza.globalguide",
-      "googleServicesFile": process.env.GOOGLE_SERVICES_INFOPLIST,
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        googleSignIn: {
+          // Your iOS client ID from GoogleService-Info.plist
+          clientId: "1076596954735-omthr1l92svgqnoops96dkq43u9lp94s.apps.googleusercontent.com",
+        },
+      },
       "infoPlist": {
         "CFBundleURLTypes": [
           {
             "CFBundleURLSchemes": [
-              "com.googleusercontent.apps.859767867537-p7jif2unfvsp2opoubsrtksq9lqqpq9o"
+              "com.googleusercontent.apps.1076596954735-a431rrjd93ihat9sq5grodi6if8npoph"
             ]
           }
         ]
@@ -35,7 +41,7 @@ export default {
         "backgroundColor": "#ffffff"
       },
       "package": "com.banjoza.globalguide",
-      "googleServicesFile": process.env.GOOGLE_SERVICES_JSON,  
+      "googleServicesFile": "./google-services.json",  
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -49,6 +55,6 @@ export default {
         "projectId": "bf95e0c0-5897-4eb6-830c-57679ab178c5"
       }
     },
-    "scheme": "globalguide"
+    "scheme": "com.banjoza.globalguide"
   }
 }

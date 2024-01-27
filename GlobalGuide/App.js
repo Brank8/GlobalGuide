@@ -5,6 +5,7 @@ import { Auth } from './src/pages/Signup/Auth';
 import HomeScreen from './src/pages/HomeScreen/HomeScreen';
 import MainContainer from './src/MainContainer';
 
+
 const Stack = createStackNavigator();
 
 const LandingScreen = ({ navigation }) => {

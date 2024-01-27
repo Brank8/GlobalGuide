@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1076596954735",
+    "project_id": "globalguide-da669",
+    "storage_bucket": "globalguide-da669.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076596954735:android:87536b15f1f38c113f5f9a",
+        "android_client_info": {
+          "package_name": "com.banjoza.globalguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076596954735-hrbi12akkvueajdtqsfcm6i773cbec24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.banjoza.globalguide",
+            "certificate_hash": "fa6b8ff0906e6fa00fb14cb06fc6982e23d92516"
+          }
+        },
+        {
+          "client_id": "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOh5n1zMGN8BMAiS3Ixy3mQtA5mug9wVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1076596954735-omthr1l92svgqnoops96dkq43u9lp94s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.banjoza.globalguide"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
