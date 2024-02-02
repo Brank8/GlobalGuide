@@ -1,7 +1,12 @@
 export default {
   "expo": {
+    updates: {
+      url: "https://u.expo.dev/71841339-d7f8-4ce6-a302-e0191ff9ea94"
+    },
+    "privacy": "unlisted",
+    runtimeVersion: "1.0.0",
     "name": "GlobalGuide",
-    "slug": "GlobalGuide",
+    "slug": "globalguide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,17 +24,11 @@ export default {
       "usesAppleSignIn": true,
       "bundleIdentifier": "com.banjoza.globalguide",
       "googleServicesFile": "./GoogleService-Info.plist",
-      "config": {
-        googleSignIn: {
-          // Your iOS client ID from GoogleService-Info.plist
-          clientId: "1076596954735-omthr1l92svgqnoops96dkq43u9lp94s.apps.googleusercontent.com",
-        },
-      },
       "infoPlist": {
         "CFBundleURLTypes": [
           {
             "CFBundleURLSchemes": [
-              "com.googleusercontent.apps.1076596954735-a431rrjd93ihat9sq5grodi6if8npoph"
+              "com.googleusercontent.apps.989750258747-tvpria9dp3e4m2ganife5ru162d3tepc"
             ]
           }
         ]
@@ -52,7 +51,7 @@ export default {
     ],
     "extra": {
       "eas": {
-        "projectId": "bf95e0c0-5897-4eb6-830c-57679ab178c5"
+        "projectId": "71841339-d7f8-4ce6-a302-e0191ff9ea94"
       }
     },
     "scheme": "com.banjoza.globalguide"

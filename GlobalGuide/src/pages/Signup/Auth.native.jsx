@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, View, StyleSheet, Text, TouchableOpacity, SafeAreaView, ImageBackground, Dimensions, Button } from "react-native";
+import { Platform, View, StyleSheet, Text, TouchableOpacity, Image, SafeAreaView, ImageBackground, Dimensions, Button } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -8,26 +8,45 @@ import * as Google from 'expo-auth-session/providers/google';
 import { ResponseType } from 'expo-auth-session';
 // import { GoogleSignin, GoogleSigninButton } from "@react-native-google-signin/google-signin"
 import * as AuthSession from 'expo-auth-session';
+import * as WebBrowser from 'expo-web-browser'
 
+//989750258747-r1petnv7s8qqpk0l30v8ue180kdi8nar.apps.googleusercontent.com
+//989750258747-tvpria9dp3e4m2ganife5ru162d3tepc.apps.googleusercontent.com
+//989750258747-j26jh5mljiir86rsq2c1hhrk7f6ipvm4.apps.googleusercontent.com
+
+WebBrowser.maybeCompleteAuthSession()
 
 const backgroundLogin = require("../../../public/login.jpg");
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
 export function Auth() {
+  const [accessToken, setAccessToken] = React.useState(null)
+  const [user, setUser] = React.useState(null)
+
+  const redirectUri = 'https://globalguide.com/oauthredirect';
+
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    expoClientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com',
-    iosClientId: '1076596954735-omthr1l92svgqnoops96dkq43u9lp94s.apps.googleusercontent.com',
-    androidClientId: '1076596954735-hrbi12akkvueajdtqsfcm6i773cbec24.apps.googleusercontent.com',
-    webClientId: '1076596954735-a431rrjd93ihat9sq5grodi6if8npoph.apps.googleusercontent.com', 
+    clientId: "989750258747-r1petnv7s8qqpk0l30v8ue180kdi8nar.apps.googleusercontent.com",
+    iosClientId: "989750258747-tvpria9dp3e4m2ganife5ru162d3tepc.apps.googleusercontent.com",
+    androidClientId: "989750258747-j26jh5mljiir86rsq2c1hhrk7f6ipvm4.apps.googleusercontent.com",
+    redirectUri
   });
   
   React.useEffect(() => {
     if (response?.type === 'success') {
-      const { authentication } = response;
-      const { id_token } = response.params;
+      setAccessToken(response.authentication.accessToken);
+      accessToken && fetchUserInfo();
     }
-  }, [response]);
+  }, [response, accessToken]);
+
+  async function fetchUserInfo() {
+    let response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
+    const userInfo = await response.json();
+    setUser(userInfo);
+  }
 
   const navigation = useNavigation();
 
@@ -53,6 +72,7 @@ export function Auth() {
   };
 
   return (
+
     <SafeAreaView style={styles.safeAreaView}>
       <ImageBackground
         source={backgroundLogin}
