@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "purple",
+    backgroundColor: "pink",
     padding: screenWidth * 0.03,
     borderRadius: 5,
     flex: 1,
