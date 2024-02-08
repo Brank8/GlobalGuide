@@ -4,10 +4,10 @@ export default {
       url: "https://u.expo.dev/71841339-d7f8-4ce6-a302-e0191ff9ea94"
     },
     "privacy": "unlisted",
-    runtimeVersion: "1.0.0",
+    "runtimeVersion": "1.0.1",
     "name": "GlobalGuide",
     "slug": "globalguide",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -35,6 +35,7 @@ export default {
       }
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
